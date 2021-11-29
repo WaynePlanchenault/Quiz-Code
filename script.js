@@ -73,6 +73,20 @@ const display = {
   question: function () {
     this.elementShown("question", quiz.getCurrentQuestion().text);
   },
+  choices: function () {
+    let choices = quiz.getCurrentQuestion().choices;
+
+    guessHandler = (id, guess) => {
+      // récupère l'id de l'élément sur lequel on va cliquer
+      document.getElementById(id).onclick = function () {
+        quiz.guess(guess);
+        quizApp();
+      };
+    };
+    for (let i = 0; i < choices.length; i++) {
+      this.elementShown("choice" + i, choices[i]); // on conccatène l'ID en incrémentation
+    }
+  },
 };
 
 // logique du jeu
