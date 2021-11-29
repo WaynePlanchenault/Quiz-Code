@@ -68,7 +68,7 @@ const display = {
     let endQuizHTML = `
         <h1>Quiz terminé ! </h1>
         <h3>Votre score est de : ${quiz.score} / ${quiz.questions.length} </h3>`;
-    this.elementShown("question", endQuizHTML);
+    this.elementShown("quiz", endQuizHTML);
   },
   question: function () {
     this.elementShown("question", quiz.getCurrentQuestion().text);
@@ -88,6 +88,13 @@ const display = {
       guessHandler("guess" + i, choices[i]);
     }
   },
+  progress: function () {
+    let currentQuestionNumber = quiz.currentQuestionIndex + 1; // +1 car commence à 0
+    this.elementShown(
+      "progress",
+      "question " + currentQuestionNumber + " sur " + quiz.questions.length
+    );
+  },
 };
 
 // logique du jeu
@@ -98,7 +105,7 @@ quizApp = () => {
   } else {
     display.question();
     display.choices();
-    //display.progress();
+    display.progress();
   }
 };
 
