@@ -34,4 +34,25 @@ let questions = [
   ),
 ];
 
-console.log(questions);
+//console.log(questions);
+
+class Quiz {
+  constructor(questions) {
+    this.score = 0;
+    this.questions = questions;
+    this.currentQuestionIndex = 0; // l'index de la question actuelle
+  }
+  getCurrentQuestion() {
+    return this.questions[this.currentQuestionIndex];
+  }
+  guess(answer) {
+    //vérifie la réponse de l'utilisateur
+    if (this.currentQuestionIndex().isCorrectAnswer(answer)) {
+      this.score++;
+    }
+    this.currentQuestionIndex++; // permet d'afficher la question suivante
+  }
+  hasEnded() {
+    return this.currentQuestionIndex >= this.questions.lenght; // si current... est plus élevé alors on déclenche hasEnded
+  }
+}
