@@ -20,7 +20,8 @@ body h1 {
   text-transform: uppercase;
   font-size: 3rem;
 }
-body h1 span, body h1 i {
+body h1 span,
+body h1 i {
   color: #ffa502;
 }
 body h3 {
@@ -50,4 +51,16 @@ body .container .choices button:hover {
   background: #ffa502;
   transition: 0.5s;
 }
-body .container .choices button:activ
+body .container .choices button:active {
+  transform: scale(0.9);
+  transition: transform 0.1s;
+}
+body .container .choices button p {
+  font-size: 1.3rem;
+}
+body #progress {
+  font-size: 1.3rem;
+  color: #ffa502;
+}
+
+/*# sourceMappingURL=style.css.map */
