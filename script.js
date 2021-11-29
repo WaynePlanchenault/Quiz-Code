@@ -47,13 +47,13 @@ class Quiz {
   }
   guess(answer) {
     //vérifie la réponse de l'utilisateur
-    if (this.currentQuestionIndex().isCorrectAnswer(answer)) {
+    if (this.getCurrentQuestion().isCorrectAnswer(answer)) {
       this.score++;
     }
     this.currentQuestionIndex++; // permet d'afficher la question suivante
   }
   hasEnded() {
-    return this.currentQuestionIndex >= this.questions.lenght; // si current... est plus élevé alors on déclenche hasEnded
+    return this.currentQuestionIndex >= this.questions.length; // si current... est plus élevé alors on déclenche hasEnded
   }
 }
 
@@ -85,6 +85,7 @@ const display = {
     };
     for (let i = 0; i < choices.length; i++) {
       this.elementShown("choice" + i, choices[i]); // on conccatène l'ID en incrémentation
+      guessHandler("guess" + i, choices[i]);
     }
   },
 };
@@ -93,12 +94,11 @@ const display = {
 
 quizApp = () => {
   if (quiz.hasEnded()) {
-    display.endQuizz();
+    display.endQuiz();
   } else {
     display.question();
     display.choices();
-    // choix
-    // progrès
+    //display.progress();
   }
 };
 
