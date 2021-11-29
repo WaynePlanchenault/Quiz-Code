@@ -56,3 +56,41 @@ class Quiz {
     return this.currentQuestionIndex >= this.questions.lenght; // si current... est plus élevé alors on déclenche hasEnded
   }
 }
+
+// regrouper les fonctions relatives à l'affichage de l'app
+const display = {
+  elementShown: function (id, text) {
+    let element = document.getElementById(id);
+    element.innerHTML = text;
+    // on va pointer un id puis lui rajouter du text, permet de ne pas avoir à retaper ces lignes dans chaque fonction
+  },
+  endQuiz: function () {
+    let endQuizHTML = `
+        <h1>Quiz terminé ! </h1>
+        <h3>Votre score est de : ${quiz.score} / ${quiz.questions.length} </h3>`;
+    this.elementShown("question", endQuizHTML);
+  },
+  question: function () {
+    this.elementShown("question", quiz.getCurrentQuestion().text);
+  },
+};
+
+// logique du jeu
+
+quizApp = () => {
+  if (quiz.hasEnded()) {
+    display.endQuizz();
+  } else {
+    display.question();
+    display.choices();
+    // choix
+    // progrès
+  }
+};
+
+// créer quiz
+
+let quiz = new Quiz(questions);
+quizApp();
+
+// console.log(quiz);
